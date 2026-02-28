@@ -471,46 +471,53 @@
     /* ══ ACCESSIBILITY BAR ══ */
     .a11y-bar {
       position: fixed;
-      top: 0; right: 0; left: 0;
+      top: 12px;
+      right: 50%;
+      transform: translateX(50%);
       z-index: 9999;
       background: rgba(10,10,10,0.92);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(196,144,48,0.25);
+      border: 1px solid rgba(196,144,48,0.25);
+      border-radius: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 8px 16px;
+      gap: 8px;
+      padding: 8px 20px;
       direction: rtl;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      white-space: nowrap;
     }
     .a11y-label {
       font-size: 12px;
       color: #bdbdbd;
       letter-spacing: 1px;
       font-family: 'Rubik', sans-serif;
+      margin-left: 4px;
     }
     .a11y-btn {
       background: none;
       border: 1px solid rgba(196,144,48,0.4);
       color: var(--gold);
       font-family: 'Rubik', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
-      width: 34px; height: 34px;
+      width: 32px; height: 32px;
       border-radius: 50%;
       cursor: pointer;
       transition: background 0.15s, border-color 0.15s;
       display: flex; align-items: center; justify-content: center;
       line-height: 1;
     }
-    .a11y-btn:hover { background: rgba(196,144,48,0.1); border-color: var(--gold); }
-    .a11y-size-display {
-      font-size: 11px; color: #888;
-      font-family: 'Rubik', sans-serif;
-      min-width: 30px; text-align: center;
+    .a11y-btn:hover { background: rgba(196,144,48,0.15); border-color: var(--gold); }
+    .a11y-btn.reset {
+      font-size: 11px;
+      color: #aaa;
+      border-color: rgba(255,255,255,0.15);
     }
-    /* Push page content below the bar */
-    body { padding-top: 50px; }
+    .a11y-btn.reset:hover { color: var(--gold); border-color: rgba(196,144,48,0.4); }
+    /* Push page content below bar */
+    body { padding-top: 58px; }
 
     /* ══ SECTION CTA BUTTON ══ */
     .section-cta {
@@ -653,7 +660,7 @@
 <div class="a11y-bar" role="toolbar" aria-label="נגישות">
   <span class="a11y-label">גודל טקסט</span>
   <button class="a11y-btn" id="txt-down" aria-label="הקטן טקסט">א−</button>
-  <span class="a11y-size-display" id="txt-level">100%</span>
+  <button class="a11y-btn reset" id="txt-reset" aria-label="איפוס גודל טקסט">א</button>
   <button class="a11y-btn" id="txt-up"   aria-label="הגדל טקסט">א+</button>
 </div>
 
@@ -1174,17 +1181,19 @@
   items.forEach(el => io.observe(el));
 </script>
 <script>
-  // Accessibility bar - font size
-  const root = document.documentElement;
-  let level = 100;
-  const display = document.getElementById('txt-level');
-  function setSize(n) {
-    level = Math.min(150, Math.max(80, n));
-    root.style.fontSize = level + '%';
-    display.textContent = level + '%';
+  // Accessibility bar - font size via rem scaling
+  let scale = 1;
+  const step = 0.1;
+  const min = 0.8, max = 1.5;
+
+  function applyScale(s) {
+    scale = Math.min(max, Math.max(min, s));
+    document.documentElement.style.fontSize = (scale * 100) + '%';
   }
-  document.getElementById('txt-up').addEventListener('click', () => setSize(level + 10));
-  document.getElementById('txt-down').addEventListener('click', () => setSize(level - 10));
+
+  document.getElementById('txt-up').addEventListener('click',    () => applyScale(scale + step));
+  document.getElementById('txt-down').addEventListener('click',  () => applyScale(scale - step));
+  document.getElementById('txt-reset').addEventListener('click', () => applyScale(1));
 </script>
 
   <script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80205/init.js"></script>
