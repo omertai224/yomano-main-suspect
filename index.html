@@ -111,17 +111,6 @@
       pointer-events: none;
     }
 
-    .hero-label {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 5px;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 60px;
-      opacity: 0;
-      animation: up 0.6s ease 0.1s forwards;
-    }
-
     .hero-poem {
       display: flex;
       flex-direction: column;
@@ -194,19 +183,11 @@
     }
     .scroll-ind span { font-size: 10px; letter-spacing: 3px; color: #bdbdbd; text-transform: uppercase; }
     .scroll-ind svg { width: 18px; animation: bob 2.4s ease-in-out infinite; }
-    @media(max-width:600px){
-      .hero { padding: 80px 8vw 100px; }
-    }
     @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
     /* ══ MOBILE RESPONSIVE ══ */
     @media(max-width:600px){
       .hero { padding: 70px 6vw 90px; }
-
-      /* Hero label spacing */
-      .hero-label { margin-bottom: 32px; }
-
-      /* Hero poem tighter */
       .hero-poem { margin-bottom: 36px; gap: 5px; }
 
       /* Smaller font floors on mobile */
@@ -260,7 +241,8 @@
 
       /* CTA button full width */
       .btn-cta { display: block; text-align: center; padding: 20px 32px; font-size: 15px; }
-      .btn-pulse-wrap { display: block; }
+      .section-cta { padding: 40px 6vw 60px; }
+      .section-cta a { font-size: 14px; padding: 14px 32px; width: 100%; text-align: center; }
 
       /* Story poem */
       .sp2 { font-size: clamp(22px, 6vw, 40px); }
@@ -328,10 +310,6 @@
     }
     .card:hover { background:#131313; border-color:var(--red); }
 
-    .card-num {
-      font-size:10px; letter-spacing:4px;
-      color:var(--red); font-weight:600; margin-bottom:28px;
-    }
     .card-icon {
       width:40px; height:40px; color:var(--gold); margin-bottom:24px;
     }
@@ -408,7 +386,6 @@
     .hp1 { font-size:clamp(40px,7.5vw,90px); color:#111; line-height:1; }
     .hp2 { font-size:clamp(24px,4vw,48px);   color:var(--red); }
 
-    .host-right {}
     .host-body p {
       font-size:18px; font-weight:300; line-height:2.1;
       color:#555; margin-bottom:22px;
@@ -432,9 +409,7 @@
     .cta-poem { display:flex; flex-direction:column; align-items:center; gap:2px; margin-bottom:56px; }
     .cta-poem span { display:block; font-weight:900; text-align:center; }
     .cp1 { font-size:clamp(16px,2.5vw,24px); color:#d0d0d0; font-weight:400; }
-    .cp2 { font-size:clamp(38px,6.5vw,78px); color:var(--white); }   /* ← white */
-    .cp3 { font-size:clamp(28px,5vw,58px);   color:var(--red); }
-    .cp4 { font-size:clamp(16px,2.5vw,24px); color:#d0d0d0; font-weight:400; }
+    .cp2 { font-size:clamp(38px,6.5vw,78px); color:var(--white); }
 
     .cta-sub {
       font-size:17px; font-weight:400;
@@ -560,11 +535,6 @@
     .learn-inner   { padding-bottom: 0 !important; }
     .host-inner    { padding-bottom: 0 !important; }
 
-    @media(max-width:600px){
-      .section-cta { padding: 40px 6vw 60px; }
-      .section-cta a { font-size: 14px; padding: 14px 32px; width: 100%; text-align: center; }
-    }
-
     /* Hero grid background */
     .hero-grid {
       position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
@@ -593,45 +563,6 @@
       color: var(--gold); letter-spacing: 0;
     }
     .card { position: relative; }
-
-    /* Section divider SVG wave */
-    .svg-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
-    .svg-divider svg { display: block; width: 100%; }
-
-    /* Timeline connector in story */
-    .story-timeline {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 0;
-      padding-top: 8px;
-    }
-    .tl-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--red); flex-shrink: 0;
-    }
-    .tl-line {
-      width: 1px; flex: 1; min-height: 40px;
-      background: linear-gradient(to bottom, var(--red), transparent);
-    }
-
-    /* Magnifier watermark in suspects section */
-    .suspects-watermark {
-      position: absolute; left: -40px; top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.03; pointer-events: none;
-    }
-
-    /* Pulse rings - disabled */
-    .pulse-ring { display: none; }
-
-    /* Horizontal rule with icon */
-    .icon-rule {
-      display: flex; align-items: center; gap: 16px;
-      margin: 0 0 60px;
-      opacity: 0.4;
-    }
-    .icon-rule::before, .icon-rule::after {
-      content: ''; flex: 1; height: 1px; background: currentColor;
-    }
 
     /* Story quote marks */
     .story-quote-mark {
@@ -789,6 +720,7 @@
       <span class="sp1">לקחתי מחשב ישן של שכן.</span>
       <span class="sp2">הוא אמר לי:</span>
       <span class="sp3">"הוא מת"</span>
+
     </div>
 
     <div class="story-right reveal">
@@ -846,6 +778,7 @@
         <span class="sb">החשודים.</span>
         <span class="sc">כולם במעגל החשד.</span>
       </div>
+
     </div>
 
     <div class="suspects-grid">
@@ -991,6 +924,7 @@
         <span class="lp2">כלים לכל החיים.</span>
         <span class="lp3">בלי מונחים טכניים. בלי בלבול.</span>
       </div>
+
     </div>
 
     <div class="learn-grid">
@@ -1099,7 +1033,7 @@
       <span class="hp2">בלש מחשבים מגיל 16.</span>
     </div>
 
-    <div class="host-right reveal">
+    <div class="reveal">
       <span class="tag">החוקר הראשי</span>
       <div class="host-body">
         <p>
@@ -1149,12 +1083,7 @@
   </p>
 
   <div class="btn-cta-wrap reveal">
-    <div class="btn-pulse-wrap">
-      <div class="pulse-ring"></div>
-      <div class="pulse-ring"></div>
-      <div class="pulse-ring"></div>
-      <a href="https://bizlive.co.il/event/?eventid=85989" class="btn-cta">שמרו לי מקום בהרצאה</a>
-    </div>
+    <a href="https://bizlive.co.il/event/?eventid=85989" class="btn-cta">שמרו לי מקום בהרצאה</a>
     <span class="cta-fine">אונליין &nbsp;·&nbsp; חינמי &nbsp;·&nbsp; שאלות בשידור חי</span>
   </div>
 
