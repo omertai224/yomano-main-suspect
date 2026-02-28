@@ -183,6 +183,80 @@
     }
     @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
+    /* ══ MOBILE RESPONSIVE ══ */
+    @media(max-width:600px){
+      .hero { padding: 70px 6vw 90px; }
+
+      /* Hero label spacing */
+      .hero-label { margin-bottom: 32px; }
+
+      /* Hero poem tighter */
+      .hero-poem { margin-bottom: 36px; gap: 5px; }
+
+      /* Smaller font floors on mobile */
+      .line.a { font-size: clamp(20px, 5vw, 30px); }
+      .line.b { font-size: clamp(30px, 7vw, 50px); }
+      .line.c { font-size: clamp(38px, 10vw, 60px); }
+      .line.d { font-size: clamp(26px, 6vw, 40px); }
+
+      /* Hero sub */
+      .hero-sub { font-size: 15px; line-height: 1.9; }
+
+      /* Hero actions */
+      .hero-actions { margin-top: 36px; align-items: stretch; }
+      .btn { text-align: center; padding: 16px 32px; font-size: 15px; }
+
+      /* Hero image */
+      .hero-inner { gap: 36px; }
+      .hero-img-wrap { max-width: 260px; }
+
+      /* Section paddings */
+      .story-inner  { padding: 70px 6vw; }
+      .suspects-inner { padding: 70px 6vw; }
+      .learn-inner  { padding: 70px 6vw; }
+      .host-inner   { padding: 70px 6vw; }
+      .cta-wrap     { padding: 90px 6vw; }
+      .prize-wrap   { padding: 36px 6vw; }
+
+      /* Suspects head */
+      .suspects-head { margin-bottom: 48px; }
+      .sb { font-size: clamp(32px, 9vw, 52px); }
+      .sc { font-size: clamp(20px, 5.5vw, 32px); }
+
+      /* Cards */
+      .card { padding: 32px 24px; }
+      .card-badge { top: 14px; left: 14px; }
+
+      /* Learn head */
+      .learn-head { margin-bottom: 48px; }
+      .lp2 { font-size: clamp(28px, 8vw, 48px); }
+      .lp3 { font-size: clamp(18px, 5vw, 30px); }
+
+      /* Learn grid single column */
+      .learn-grid { grid-template-columns: 1fr; gap: 36px; }
+
+      /* Host */
+      .hp1 { font-size: clamp(36px, 10vw, 60px); }
+      .hp2 { font-size: clamp(20px, 5.5vw, 32px); }
+
+      /* CTA poem */
+      .cp2 { font-size: clamp(30px, 8vw, 52px); }
+
+      /* CTA button full width */
+      .btn-cta { display: block; text-align: center; padding: 20px 32px; font-size: 15px; }
+      .btn-pulse-wrap { display: block; }
+
+      /* Story poem */
+      .sp2 { font-size: clamp(22px, 6vw, 40px); }
+      .sp3 { font-size: clamp(28px, 8vw, 52px); }
+
+      /* Hide scroll indicator on mobile */
+      .scroll-ind { display: none; }
+
+      /* Story quote mark reposition */
+      .story-quote-mark { font-size: 80px; top: -5px; right: -10px; }
+    }
+
 
     /* ══ STORY (light) ══ */
     .story-wrap { background: var(--paper); color: #111; }
