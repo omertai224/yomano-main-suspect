@@ -277,7 +277,7 @@
     /* ══ STORY (light) ══ */
     .story-wrap { background: var(--paper); color: #111; }
     .story-inner {
-      max-width: 1160px; margin: 0 auto; padding: 130px 8vw;
+      max-width: 1160px; margin: 0 auto; padding: 130px 8vw 0;
       display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
     }
     @media(max-width:740px){ .story-inner,.host-inner{ grid-template-columns:1fr; gap:52px; } }
@@ -305,7 +305,7 @@
 
     /* ══ SUSPECTS (dark) ══ */
     .suspects-wrap { background: #080808; }
-    .suspects-inner { max-width:1160px; margin:0 auto; padding:130px 8vw; }
+    .suspects-inner { max-width:1160px; margin:0 auto; padding:130px 8vw 0; }
     .suspects-head { margin-bottom:80px; }
     .susp-poem { display:flex; flex-direction:column; gap:2px; }
     .susp-poem span { display:block; font-weight:900; }
@@ -353,7 +353,7 @@
 
     /* ══ LEARN (light) ══ */
     .learn-wrap { background: var(--paper); color: #111; }
-    .learn-inner { max-width:1160px; margin:0 auto; padding:130px 8vw; }
+    .learn-inner { max-width:1160px; margin:0 auto; padding:130px 8vw 0; }
     .learn-head { margin-bottom:80px; }
     .learn-poem { display:flex; flex-direction:column; gap:2px; }
     .learn-poem span { display:block; font-weight:900; }
@@ -399,7 +399,7 @@
     /* ══ HOST (light) ══ */
     .host-wrap { background:var(--paper); color:#111; }
     .host-inner {
-      max-width:1160px; margin:0 auto; padding:130px 8vw;
+      max-width:1160px; margin:0 auto; padding:130px 8vw 0;
       display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
     }
     .host-poem { display:flex; flex-direction:column; gap:4px; }
@@ -468,7 +468,83 @@
     }
 
 
-    /* ══ GRAPHIC ELEMENTS ══ */
+    /* ══ ACCESSIBILITY BAR ══ */
+    .a11y-bar {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 9999;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(196,144,48,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 8px 16px;
+      direction: rtl;
+    }
+    .a11y-label {
+      font-size: 12px;
+      color: #bdbdbd;
+      letter-spacing: 1px;
+      font-family: 'Rubik', sans-serif;
+    }
+    .a11y-btn {
+      background: none;
+      border: 1px solid rgba(196,144,48,0.4);
+      color: var(--gold);
+      font-family: 'Rubik', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+    .a11y-btn:hover { background: rgba(196,144,48,0.1); border-color: var(--gold); }
+    .a11y-size-display {
+      font-size: 11px; color: #888;
+      font-family: 'Rubik', sans-serif;
+      min-width: 30px; text-align: center;
+    }
+    /* Push page content below the bar */
+    body { padding-top: 50px; }
+
+    /* ══ SECTION CTA BUTTON ══ */
+    .section-cta {
+      display: flex;
+      justify-content: center;
+      padding: 56px 8vw 80px;  /* top gap from content, bottom = section bottom padding */
+    }
+    .section-cta a {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Rubik', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 16px 44px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 24px rgba(209,48,32,0.3);
+      transition: background 0.2s, transform 0.18s;
+    }
+    .section-cta a:hover { background: #b82818; transform: translateY(-2px); }
+    .section-cta.on-light a { box-shadow: 0 4px 20px rgba(209,48,32,0.18); }
+
+    /* Remove bottom padding from inner containers — section-cta handles it */
+    .story-inner   { padding-bottom: 0 !important; }
+    .suspects-inner { padding-bottom: 0 !important; }
+    .learn-inner   { padding-bottom: 0 !important; }
+    .host-inner    { padding-bottom: 0 !important; }
+
+    @media(max-width:600px){
+      .section-cta { padding: 40px 6vw 60px; }
+      .section-cta a { font-size: 14px; padding: 14px 32px; width: 100%; text-align: center; }
+    }
 
     /* Hero grid background */
     .hero-grid {
@@ -525,21 +601,8 @@
       opacity: 0.03; pointer-events: none;
     }
 
-    /* Pulse rings on CTA button */
-    .btn-pulse-wrap { position: relative; display: inline-block; }
-    .pulse-ring {
-      position: absolute; inset: -8px;
-      border-radius: 100px;
-      border: 1px solid rgba(209,48,32,0.5);
-      animation: pulse-out 2.4s ease-out infinite;
-      pointer-events: none;
-    }
-    .pulse-ring:nth-child(2) { animation-delay: 0.8s; }
-    .pulse-ring:nth-child(3) { animation-delay: 1.6s; }
-    @keyframes pulse-out {
-      0%   { transform: scale(1);   opacity: 0.6; }
-      100% { transform: scale(1.3); opacity: 0; }
-    }
+    /* Pulse rings - disabled */
+    .pulse-ring { display: none; }
 
     /* Horizontal rule with icon */
     .icon-rule {
@@ -585,6 +648,14 @@
   </style>
 </head>
 <body>
+
+<!-- ══ ACCESSIBILITY BAR ══ -->
+<div class="a11y-bar" role="toolbar" aria-label="נגישות">
+  <span class="a11y-label">גודל טקסט</span>
+  <button class="a11y-btn" id="txt-down" aria-label="הקטן טקסט">א−</button>
+  <span class="a11y-size-display" id="txt-level">100%</span>
+  <button class="a11y-btn" id="txt-up"   aria-label="הגדל טקסט">א+</button>
+</div>
 
 
 <!-- ══════ HERO ══════ -->
@@ -720,6 +791,9 @@
       </div>
     </div>
 
+  </div>
+  <div class="section-cta on-light reveal">
+    <a href="https://bizlive.co.il/event/?eventid=85989" target="_blank">שמרו לי מקום בהרצאה</a>
   </div>
 </section>
 
@@ -877,6 +951,9 @@
 
     </div>
   </div>
+  <div class="section-cta reveal">
+    <a href="https://bizlive.co.il/event/?eventid=85989" target="_blank">שמרו לי מקום בהרצאה</a>
+  </div>
 </section>
 
 
@@ -968,6 +1045,9 @@
 
     </div>
   </div>
+  <div class="section-cta on-light reveal">
+    <a href="https://bizlive.co.il/event/?eventid=85989" target="_blank">שמרו לי מקום בהרצאה</a>
+  </div>
 </section>
 
 
@@ -1025,6 +1105,9 @@
     </div>
 
   </div>
+  <div class="section-cta on-light reveal">
+    <a href="https://bizlive.co.il/event/?eventid=85989" target="_blank">שמרו לי מקום בהרצאה</a>
+  </div>
 </section>
 
 
@@ -1047,7 +1130,7 @@
       <div class="pulse-ring"></div>
       <div class="pulse-ring"></div>
       <div class="pulse-ring"></div>
-      <a href="https://bizlive.co.il/event/?eventid=85989" class="btn-cta">שמרו לי מקום בהרצאה הבאה</a>
+      <a href="https://bizlive.co.il/event/?eventid=85989" class="btn-cta">שמרו לי מקום בהרצאה</a>
     </div>
     <span class="cta-fine">אונליין &nbsp;·&nbsp; חינמי &nbsp;·&nbsp; שאלות בשידור חי</span>
   </div>
@@ -1090,6 +1173,20 @@
   }, { threshold: 0.1 });
   items.forEach(el => io.observe(el));
 </script>
+<script>
+  // Accessibility bar - font size
+  const root = document.documentElement;
+  let level = 100;
+  const display = document.getElementById('txt-level');
+  function setSize(n) {
+    level = Math.min(150, Math.max(80, n));
+    root.style.fontSize = level + '%';
+    display.textContent = level + '%';
+  }
+  document.getElementById('txt-up').addEventListener('click', () => setSize(level + 10));
+  document.getElementById('txt-down').addEventListener('click', () => setSize(level - 10));
+</script>
+
   <script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80205/init.js"></script>
 </body>
 </html>
